@@ -1,19 +1,12 @@
+using MMTest.Data;
 using MMTest.GameEvents;
-using MMTest.Input;
 using UnityEngine;
 
 namespace MMTest.Gameplay.Player
 {
-    [RequireComponent(typeof(CharacterController))]
-    public class PlayerMovement : MonoBehaviour
+    [RequireComponent(typeof(CharacterController)), DefaultExecutionOrder(2)]
+    public class PlayerMovement : PlayerComponent
     {
-        [SerializeField]
-        private InputReader _inputReader;
-        [SerializeField]
-        private float _moveSpeed;
-        [SerializeField]
-        private float _sprintSpeed;
-
         private CharacterController _characterController;
 
         private float _currentMoveSpeed = 0;
@@ -21,28 +14,14 @@ namespace MMTest.Gameplay.Player
         private bool _isSprinting = false;
         private Vector3 velocity = Vector3.zero;
 
-        private IInputEvents _input => _inputReader;
-
-
         private void Awake()
         {
-            if(_input == null)
-                Debug.LogError("Missing Input Reader");
-
             _characterController = GetComponent<CharacterController>();
-
-        }
-
-        private void OnEnable()
-        {
-            _input.Move += OnMove;
-            _input.Sprint += OnSprint;
         }
 
         private void Start()
         {
-            _inputReader.EnablePlayerInput();   //Keeping it active by default for now
-            _currentMoveSpeed = _moveSpeed;
+            _currentMoveSpeed = _config.BaseMoveSpeed;
         }
 
         private void Update()
@@ -50,11 +29,20 @@ namespace MMTest.Gameplay.Player
             Movement();
         }
 
-        private void OnDisable()
+        protected override void Subscribe()
+        {
+            _input.Move += OnMove;
+            _input.Sprint += OnSprint;
+        }
+
+        protected override void Unsubscribe()
         {
             _input.Move -= OnMove;
             _input.Sprint -= OnSprint;
+        }
 
+        protected override void ResetInputs()
+        {
             _moveInput = Vector2.zero;
             _isSprinting = false;
         }
@@ -75,7 +63,7 @@ namespace MMTest.Gameplay.Player
 
         private void Movement()
         {
-            _currentMoveSpeed = _isSprinting ? _sprintSpeed : _moveSpeed;
+            _currentMoveSpeed = _isSprinting ? _config.SprintSpeed : _config.BaseMoveSpeed;
 
             Vector3 direction = transform.right * _moveInput.x + transform.forward * _moveInput.y;
 

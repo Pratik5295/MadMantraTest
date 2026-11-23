@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1414222389730188945}
   - component: {fileID: 462811127705116713}
   - component: {fileID: 5861854418311434277}
+  - component: {fileID: 8960010201150269040}
   - component: {fileID: 6874821166422217153}
   - component: {fileID: 5214437963418309373}
   m_Layer: 0
@@ -119,6 +120,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8960010201150269040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2220895610487540940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efeeb95768488d643a4f8f0144818a0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.Player.GamePlayer
+  _components:
+  - {fileID: 6874821166422217153}
+  - {fileID: 5214437963418309373}
+  _inputReader: {fileID: 11400000, guid: 4aa272e12d2542d45b5c6b9fec8411c3, type: 2}
+  _config: {fileID: 11400000, guid: 5bba389a7dda1414f8ecd909a87c4d7a, type: 2}
 --- !u!114 &6874821166422217153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,9 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7258d9bf05e9b940822325961e03afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.Player.PlayerMovement
-  _inputReader: {fileID: 11400000, guid: 4aa272e12d2542d45b5c6b9fec8411c3, type: 2}
-  _moveSpeed: 3
-  _sprintSpeed: 7
 --- !u!114 &5214437963418309373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452c73dd20ccd704a9a4a3d55c178e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.Player.PlayerLook
-  _inputReader: {fileID: 11400000, guid: 4aa272e12d2542d45b5c6b9fec8411c3, type: 2}
   _playerRoot: {fileID: 4192614570794893536}
   _viewPivot: {fileID: 2281571271903899158}
 --- !u!1 &3801412608846183141
