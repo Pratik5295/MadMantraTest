@@ -1,11 +1,18 @@
 using MMTest.GameEvents;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace MMTest.Input
 {
-    public class InputManager : MonoBehaviour, Controls.IPlayerActions
+    [CreateAssetMenu(fileName = "InputReader", menuName = "Project/Input/Create Input Reader")]
+    public class InputReader : ScriptableObject,IInputEvents, Controls.IPlayerActions
     {
+        public event Action<Vector2> Move;
+        public event Action<Vector2> Look;
+        public event Action Interact;
+        public event Action<bool> Sprint;
+
         private Controls _controls;
 
         #region Controls Callbacks
@@ -13,55 +20,51 @@ namespace MMTest.Input
         public void OnInteract(InputAction.CallbackContext context)
         {
             if (context.started)
-                InputEvents.BroadcastInteract();
+                Interact?.Invoke();
         }
 
         public void OnLook(InputAction.CallbackContext context)
         {
             if (context.performed)
-                InputEvents.BroadcastLook(context.ReadValue<Vector2>());
+                Look?.Invoke(context.ReadValue<Vector2>());
             else if (context.canceled)
-                InputEvents.BroadcastLook(Vector2.zero);
+                Look?.Invoke(Vector2.zero);
         }
 
         public void OnMove(InputAction.CallbackContext context)
         {
             if (context.performed)
-                InputEvents.BroadcastMove(context.ReadValue<Vector2>());
+                Move?.Invoke(context.ReadValue<Vector2>());
             else if (context.canceled)
-                InputEvents.BroadcastMove(Vector2.zero);
+                Move?.Invoke(Vector2.zero);
         }
 
         public void OnSprint(InputAction.CallbackContext context)
         {
             if (context.started)
-                InputEvents.BroadcastSprint(true);
+                Sprint?.Invoke(true);
             else if (context.canceled)
-                InputEvents.BroadcastSprint(false);
+                Sprint?.Invoke(false);
         }
 
         #endregion
 
-        private void Awake()
-        {
-            _controls = new Controls();
-            _controls.Player.AddCallbacks(this);
-        }
 
         private void OnEnable()
         {
+            if(_controls == null)
+            {
+                _controls = new Controls();
+                _controls.Player.SetCallbacks(this);
+            }
+
             _controls.Player.Enable();
         }
 
         private void OnDisable()
         {
-            _controls.Player.Disable();
+            _controls?.Player.Disable();
         }
 
-        private void OnDestroy()
-        {
-            _controls.Dispose();
-            _controls = null;
-        }
     }
 }
