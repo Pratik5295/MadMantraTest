@@ -57,14 +57,23 @@ namespace MMTest.Input
                 _controls = new Controls();
                 _controls.Player.SetCallbacks(this);
             }
-
-            _controls.Player.Enable();
         }
 
         private void OnDisable()
         {
-            _controls?.Player.Disable();
+            DisablePlayerInput();
         }
 
+        #region Input Switching Section
+        public void EnablePlayerInput()
+        {
+            _controls.Player.Enable();
+        }
+
+        public void DisablePlayerInput()
+        {
+            _controls?.Player.Disable();
+        }
+        #endregion
     }
 }
