@@ -26,8 +26,8 @@ namespace MMTest.Gameplay.Player
 
         private void Look()
         {
-            _yaw += _lookInput.x;
-            _pitch += _lookInput.y;
+            _yaw += _lookInput.x * _config.CameraSensitivity;
+            _pitch += _lookInput.y * _config.CameraSensitivity;
 
             _lookInput = Vector2.zero;
 

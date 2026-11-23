@@ -13,7 +13,10 @@ namespace MMTest.Data
         private float _sprintSpeed;
         public float SprintSpeed => _sprintSpeed;
 
-        [Space(5),Header("Look")]
+        [Space(5), Header("Look")]
+        [SerializeField]
+        private float _cameraSensitivity;
+        public float CameraSensitivity => _cameraSensitivity;
         [SerializeField]
         private float _pitchMin;
         public float PitchMin => _pitchMin;

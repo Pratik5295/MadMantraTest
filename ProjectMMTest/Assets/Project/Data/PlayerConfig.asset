@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.Data.PlayerConfig
   _baseMoveSpeed: 3
   _sprintSpeed: 5
+  _cameraSensitivity: 0.08
   _pitchMin: -30
   _pitchMax: 80
