@@ -14,7 +14,7 @@ namespace MMTest.Gameplay.Player
         [SerializeField]
         private float _sprintSpeed;
 
-        private CharacterController _characterController => GetComponent<CharacterController>();
+        private CharacterController _characterController;
 
         private float _currentMoveSpeed = 0;
         private Vector2 _moveInput;
@@ -28,7 +28,9 @@ namespace MMTest.Gameplay.Player
         {
             if(_input == null)
                 Debug.LogError("Missing Input Reader");
-           
+
+            _characterController = GetComponent<CharacterController>();
+
         }
 
         private void OnEnable()
@@ -52,6 +54,9 @@ namespace MMTest.Gameplay.Player
         {
             _input.Move -= OnMove;
             _input.Sprint -= OnSprint;
+
+            _moveInput = Vector2.zero;
+            _isSprinting = false;
         }
 
         #region Input Event Handlers
@@ -63,7 +68,7 @@ namespace MMTest.Gameplay.Player
 
         private void OnSprint(bool sprint)
         {
-            _isSprinting = sprint ? true : false;
+            _isSprinting = sprint;
         }
 
         #endregion
