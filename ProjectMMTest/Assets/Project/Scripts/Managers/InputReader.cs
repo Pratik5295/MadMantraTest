@@ -85,6 +85,7 @@ namespace MMTest.Input
             {
                 _controls = new Controls();
                 _controls.Player.SetCallbacks(this);
+                _controls.Puzzle.SetCallbacks(this);
             }
         }
 

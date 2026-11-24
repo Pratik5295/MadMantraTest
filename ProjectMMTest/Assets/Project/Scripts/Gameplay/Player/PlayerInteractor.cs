@@ -47,7 +47,7 @@ namespace MMTest.Gameplay.Player
             if(found != _focused)
             {
                 _focused = found;
-                GameplayEvents.RaiseFocusChanged(_focused);
+                GameEvents.GamePlayEvents.RaiseFocusChanged(_focused);
             }
         }
 

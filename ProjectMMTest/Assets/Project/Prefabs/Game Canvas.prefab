@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.UI.GameUI
   _interactUI: {fileID: 4207873933379511476}
+  _cursor: {fileID: 8521563267370506341}
 --- !u!1 &8011662773662387532
 GameObject:
   m_ObjectHideFlags: 0

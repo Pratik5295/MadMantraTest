@@ -1,5 +1,5 @@
+using MMTest.GameEvents;
 using MMTest.Gameplay.Player;
-using System;
 using UnityEngine;
 
 namespace MMTest.Gameplay
@@ -10,7 +10,6 @@ namespace MMTest.Gameplay
         private bool _isInitialized = false;
 
         public GameState CurrentState { get; private set; }
-        public event Action<GameState> OnGameStateChanged; //Move to global class later
 
         //Various States
         public GameplayState GameplayState { get; } = new GameplayState();
@@ -36,7 +35,7 @@ namespace MMTest.Gameplay
             CurrentState = newState;
             CurrentState?.Enter(_player);
 
-            OnGameStateChanged?.Invoke(CurrentState);
+           GamePlayEvents.BroadcastGameStateChanged(CurrentState);
         }
 
         private void Update()
