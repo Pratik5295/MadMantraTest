@@ -44,5 +44,20 @@ namespace MMTest.Gameplay.Player
                 component.Inititalize(_input, _config);
             }
         }
+
+
+        //Context menu functions for quick setup
+        [ContextMenu("Setup Player Components")]
+        public void SetupPlayerComponents()
+        {
+            _components.Clear();
+
+            var components = GetComponents<PlayerComponent>();
+
+            foreach(var component in components)
+            {
+                _components.Add(component);
+            }
+        }
     }
 }
