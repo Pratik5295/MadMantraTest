@@ -34,5 +34,11 @@ namespace MMTest.Data
         [SerializeField, Tooltip("How big the interaction ray radius is")]
         private float _interactionRadius;
         public float InteractRadius => _interactionRadius;
+
+        //Puzzle Settings
+        [Space(5), Header("Puzzle Settings")]
+        [SerializeField]
+        private LayerMask _puzzleElementLayer;
+        public LayerMask PuzzleElementLayer => _puzzleElementLayer;
     }
 }

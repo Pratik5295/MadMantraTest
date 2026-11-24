@@ -9,6 +9,8 @@ namespace MMTest.UI
         //Press E to interact UI
         [SerializeField] private GameObject _interactUI;
 
+        [SerializeField] private Transform _cursor;
+
         private void OnEnable()
         {
             GameplayEvents.OnFocusedChanged += OnFocusInteractableChanged;

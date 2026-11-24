@@ -9,7 +9,7 @@ namespace MMTest.Gameplay
         {
             Debug.Log("Entered Gameplay State");
             player.SwitchToGameplayInput();
-            player.SetControls(true, true, true);
+            player.SetControls(true, true, true,false);
         }
     }
 }

@@ -12,16 +12,25 @@ namespace MMTest.Gameplay
         public GameState CurrentState { get; private set; }
         public event Action<GameState> OnGameStateChanged; //Move to global class later
 
+        //Various States
+        public GameplayState GameplayState { get; } = new GameplayState();
+        public PuzzleState PuzzleState { get; } = new PuzzleState();
+
 
         public void Initialize(GamePlayer player)
         {
             _player = player;
             _isInitialized = true;
 
-            ChangeMode(new GameplayState()); //Defaulted to Gameplay State
+            ChangeMode(GameplayState); //Defaulted to Gameplay State
         }
 
-        public void ChangeMode(GameState newState)
+        public void SwitchToGameplay() => ChangeMode(GameplayState);
+        public void SwitchToPuzzleMode() => ChangeMode(PuzzleState);
+
+
+
+        private void ChangeMode(GameState newState)
         {
             CurrentState?.Exit(_player);
             CurrentState = newState;

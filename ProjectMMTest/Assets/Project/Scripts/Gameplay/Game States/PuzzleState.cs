@@ -8,7 +8,7 @@ namespace MMTest.Gameplay
         public override void Enter(GamePlayer player)
         {
             Debug.Log("Switching to puzzle state");
-            player.SetControls(false, true, false);
+            player.SetControls(false, false, false,true);
             player.SwitchToPuzzleInput();
         }
     }

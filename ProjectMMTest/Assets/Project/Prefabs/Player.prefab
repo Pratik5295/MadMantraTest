@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6874821166422217153}
   - component: {fileID: 5214437963418309373}
   - component: {fileID: 3305757967334924597}
+  - component: {fileID: 4893405487555106431}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -138,6 +139,7 @@ MonoBehaviour:
   - {fileID: 6874821166422217153}
   - {fileID: 5214437963418309373}
   - {fileID: 3305757967334924597}
+  - {fileID: 4893405487555106431}
   _stateMachine: {fileID: 8099378003452399420}
   _inputReader: {fileID: 11400000, guid: 4aa272e12d2542d45b5c6b9fec8411c3, type: 2}
   _config: {fileID: 11400000, guid: 5bba389a7dda1414f8ecd909a87c4d7a, type: 2}
@@ -192,6 +194,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.Player.PlayerInteractor
   _camera: {fileID: 6151224511345740007}
+--- !u!114 &4893405487555106431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2220895610487540940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d133fe979b9494999cfae20e72f8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.Player.PlayerPuzzleComponent
+  _camera: {fileID: 3735256691291208195}
 --- !u!1 &3801412608846183141
 GameObject:
   m_ObjectHideFlags: 0

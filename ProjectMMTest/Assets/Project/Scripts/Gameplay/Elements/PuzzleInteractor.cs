@@ -6,7 +6,7 @@ namespace MMTest.Gameplay
     {
         public override void Interact(PlayerInteractor interactor)
         {
-            interactor.StateMachine.ChangeMode(new PuzzleState());
+            interactor.StateMachine.SwitchToPuzzleMode();
         }
     }
 }
