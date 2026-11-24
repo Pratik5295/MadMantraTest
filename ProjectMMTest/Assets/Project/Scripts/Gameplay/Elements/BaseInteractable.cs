@@ -11,11 +11,11 @@ namespace MMTest.Gameplay
         [SerializeField]
         private BaseTriggerable _trigger;
 
-        protected bool _canInteract = false;
+        protected bool _withinRange = false;
 
         public string Message => _message;
         public BaseTriggerable Trigger => _trigger;
-        public bool CanInteract => _canInteract;
+        public bool WithinRange => _withinRange;
 
         public abstract void Interact(PlayerInteractor interactor);
 
@@ -33,12 +33,12 @@ namespace MMTest.Gameplay
 
         protected virtual void OnPlayerEnter()
         {
-            _canInteract = true;
+            _withinRange = true;
         }
 
         protected virtual void OnPlayerExit()
         {
-            _canInteract &= false;
+            _withinRange &= false;
         }
     }
 }

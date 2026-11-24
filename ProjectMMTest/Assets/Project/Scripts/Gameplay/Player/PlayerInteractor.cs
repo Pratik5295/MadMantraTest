@@ -22,7 +22,7 @@ namespace MMTest.Gameplay.Player
 
         private void OnInteract()
         {
-            if(_focused != null && _focused.CanInteract)
+            if(_focused != null && _focused.WithinRange)
             {
                 _focused.Interact(this);
             }
@@ -39,7 +39,10 @@ namespace MMTest.Gameplay.Player
 
             if(Physics.SphereCast(_camera.position,_config.InteractRadius, _camera.forward, out RaycastHit hit, _config.InteractRange, _config.InteractLayer))
             {
+                
                 found = hit.collider.GetComponentInParent<IInteractable>();
+
+                if (found != null && !found.WithinRange) found = null;
             }
             if(found != _focused)
             {
