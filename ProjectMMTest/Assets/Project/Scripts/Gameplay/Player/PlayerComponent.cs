@@ -8,14 +8,18 @@ namespace MMTest.Gameplay.Player
     {
         protected IInputEvents _input;
         protected PlayerConfig _config;
+        protected GameStateMachine _stateMachine;
 
         private bool _isSubscribed = false;
         private bool _isInitialized = false;
 
-        public void Inititalize(IInputEvents input, PlayerConfig config)
+        public GameStateMachine StateMachine => _stateMachine;
+
+        public void Inititalize(IInputEvents input, PlayerConfig config, GameStateMachine state)
         {
             _input = input;
             _config = config;
+            _stateMachine = state;
             _isInitialized = true;
             TrySubscribe();
         }

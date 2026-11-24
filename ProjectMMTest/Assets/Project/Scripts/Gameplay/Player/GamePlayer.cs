@@ -13,9 +13,17 @@ namespace MMTest.Gameplay.Player
         private List<PlayerComponent> _components = new List<PlayerComponent>();
 
         [SerializeField]
+        private GameStateMachine _stateMachine;
+
+        [SerializeField]
         private InputReader _inputReader;
         [SerializeField]
         private PlayerConfig _config;
+
+        private PlayerMovement _playerMovement;
+        private PlayerLook _playerLook;
+        private PlayerInteractor _playerInteractor;
+
         private IInputEvents _input => _inputReader;
 
         private void Awake()
@@ -29,23 +37,41 @@ namespace MMTest.Gameplay.Player
 
         private void Start()
         {
-            _inputReader.EnablePlayerInput();   //Keeping it active by default for now
+            EnablePlayerInput();   //Keeping it active by default for now
         }
 
-        private void OnDestroy()
-        {
-        }
         private void InitializeComponents()
         {
             if (_components == null || _components.Count == 0) return;
 
             foreach (var component in _components)
             {
-                component.Inititalize(_input, _config);
+                if(component is PlayerMovement) _playerMovement = (PlayerMovement)component;
+                if(component is PlayerLook) _playerLook = (PlayerLook)component;
+                if(component is PlayerInteractor) _playerInteractor = (PlayerInteractor)component;
+
+                component.Inititalize(_input, _config, _stateMachine);
             }
+
+            _stateMachine.Initialize(this);
         }
 
+        #region State Handling
 
+        public void SetControls(bool movement, bool look, bool interact)
+        {
+            //Set whatever is allowed
+            _playerMovement.enabled = movement;
+            _playerLook.enabled = look;
+            _playerInteractor.enabled = interact;
+        }
+
+        public void EnablePlayerInput() => _inputReader.EnablePlayerInput();
+        public void DisablePlayerInput() => _inputReader.DisablePlayerInput();
+
+        #endregion
+
+        #region Context Menu Methods
         //Context menu functions for quick setup
         [ContextMenu("Setup Player Components")]
         public void SetupPlayerComponents()
@@ -59,5 +85,7 @@ namespace MMTest.Gameplay.Player
                 _components.Add(component);
             }
         }
+
+        #endregion
     }
 }

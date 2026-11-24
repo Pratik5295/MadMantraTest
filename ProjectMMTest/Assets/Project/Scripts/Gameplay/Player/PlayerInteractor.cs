@@ -24,7 +24,7 @@ namespace MMTest.Gameplay.Player
         {
             if(_focused != null)
             {
-                _focused.Interact();
+                _focused.Interact(this);
             }
         }
 

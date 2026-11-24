@@ -1,3 +1,4 @@
+using MMTest.Gameplay.Player;
 using UnityEngine;
 
 namespace MMTest.Gameplay
@@ -9,6 +10,6 @@ namespace MMTest.Gameplay
 
         public string Message => _message;
 
-        public abstract void Interact();
+        public abstract void Interact(PlayerInteractor interactor);
     }
 }
