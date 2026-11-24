@@ -1,6 +1,7 @@
 using MMTest.GameEvents;
 using MMTest.Gameplay;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace MMTest.UI
 {
@@ -23,6 +24,7 @@ namespace MMTest.UI
             _interactUI.SetActive(false);
         }
 
+
         private void OnDisable()
         {
             GameEvents.GamePlayEvents.OnFocusedChanged -= OnFocusInteractableChanged;
@@ -41,9 +43,7 @@ namespace MMTest.UI
 
         private void OnPuzzleCursorHandling(Vector2 pos)
         {
-            Camera camera = Camera.main;
-
-            if(RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)_cursor.parent, pos, camera, out Vector2 localposition))
+            if(RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)_cursor.parent, pos, null, out Vector2 localposition))
             {
                 _cursor.localPosition = new Vector3(localposition.x, localposition.y, 0);
             }
@@ -53,6 +53,8 @@ namespace MMTest.UI
         {
             //Reset cursor position
             _cursor.localPosition = Vector3.zero;
+
+            if (state is not GameplayState) _interactUI.SetActive(false); 
         }
     }
 }

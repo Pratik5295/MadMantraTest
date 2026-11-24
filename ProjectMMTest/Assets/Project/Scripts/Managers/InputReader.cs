@@ -78,7 +78,6 @@ namespace MMTest.Input
 
         #endregion
 
-
         private void OnEnable()
         {
             if(_controls == null)

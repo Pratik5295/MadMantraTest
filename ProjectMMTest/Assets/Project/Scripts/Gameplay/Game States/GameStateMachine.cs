@@ -22,6 +22,9 @@ namespace MMTest.Gameplay
             _isInitialized = true;
 
             ChangeMode(GameplayState); //Defaulted to Gameplay State
+
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         public void SwitchToGameplay() => ChangeMode(GameplayState);

@@ -12,7 +12,7 @@ namespace MMTest.Gameplay.Player
         private Vector2 _pos;
         private Ray _ray;
 
-        private GameObject _focused; //Puzzle button focused
+        private IPuzzleElement _focused; //Puzzle button focused
 
         protected override void Subscribe()
         {
@@ -40,7 +40,7 @@ namespace MMTest.Gameplay.Player
 
         private void OnPuzzleClick()
         {
-            Debug.Log($"Clicked when: {_pos.x} and {_pos.y}");
+            if (_focused != null) _focused.Interact();
         }
 
         private void Update()
@@ -51,9 +51,14 @@ namespace MMTest.Gameplay.Player
 
         private void CheckForPuzzleElement()
         {
+            IPuzzleElement element = null;
             if(Physics.Raycast(_ray,out RaycastHit hit, _config.InteractRange, _config.PuzzleElementLayer))
             {
-               
+                element = hit.collider.GetComponentInParent<IPuzzleElement>();
+            }
+            if(element != _focused)
+            {
+                _focused = element;
             }
         }
     }
