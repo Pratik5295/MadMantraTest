@@ -1,4 +1,5 @@
 using MMTest.Data;
+using System;
 using UnityEngine;
 
 namespace MMTest.Managers
@@ -6,6 +7,8 @@ namespace MMTest.Managers
     public class DialogueManager : MonoBehaviour
     {
         public static DialogueManager Instance { get; private set; }
+
+        public Action<DialogueSO> OnDialogueStart;
 
         private void Awake()
         {
@@ -20,9 +23,9 @@ namespace MMTest.Managers
             DontDestroyOnLoad(gameObject);
         }
 
-        public void SetDialogue(DialogueSO dialog)
+        public void SetDialogue(DialogueSO dialogue)
         {
-
+            OnDialogueStart?.Invoke(dialogue);
         }
     }
 }
