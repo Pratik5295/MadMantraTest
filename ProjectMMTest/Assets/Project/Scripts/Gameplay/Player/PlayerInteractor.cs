@@ -7,7 +7,7 @@ namespace MMTest.Gameplay.Player
         [SerializeField]
         private Transform _camera;
 
-        [SerializeField] private GameObject _focused;
+        private IInteractable _focused;
 
         protected override void Subscribe()
         {
@@ -21,7 +21,10 @@ namespace MMTest.Gameplay.Player
 
         private void OnInteract()
         {
-
+            if(_focused != null)
+            {
+                _focused.Interact();
+            }
         }
 
         private void Update()
@@ -31,13 +34,34 @@ namespace MMTest.Gameplay.Player
 
         private void CheckForInteractable()
         {
-            if(Physics.Raycast(_camera.position, _camera.forward, out RaycastHit hit, Mathf.Infinity))
+            IInteractable found = null;
+
+            if(Physics.SphereCast(_camera.position,_config.InteractRadius, _camera.forward, out RaycastHit hit, _config.InteractRange, _config.InteractLayer))
             {
-                if (hit.collider)
-                {
-                    _focused = hit.collider.gameObject;
-                }
+                found = hit.collider.GetComponentInParent<IInteractable>();
             }
+            if(found != _focused)
+            {
+                _focused = found;
+            }
+        }
+
+
+        //Debugs
+        private void OnDrawGizmosSelected()
+        {
+            if (!Application.isPlaying) return;
+
+            if (_focused != null)
+            {
+                Gizmos.color = Color.green;
+            }
+            else
+            {
+                Gizmos.color = Color.red;
+            }
+
+            Gizmos.DrawRay(_camera.position,_camera.forward * _config.InteractRange);
         }
     }
 }

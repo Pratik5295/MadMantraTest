@@ -23,5 +23,16 @@ namespace MMTest.Data
         [SerializeField]
         private float _pitchMax;
         public float PitchMax => _pitchMax;
+
+        [Space(5), Header("Interact")]
+        [SerializeField]
+        private LayerMask _interactLayer;
+        public LayerMask InteractLayer => _interactLayer;
+        [SerializeField]
+        private float _interactionRange;
+        public float InteractRange => _interactionRange;
+        [SerializeField, Tooltip("How big the interaction ray radius is")]
+        private float _interactionRadius;
+        public float InteractRadius => _interactionRadius;
     }
 }

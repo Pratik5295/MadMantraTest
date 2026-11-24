@@ -707,7 +707,8 @@ GameObject:
   - component: {fileID: 557712847}
   - component: {fileID: 557712846}
   - component: {fileID: 557712845}
-  m_Layer: 0
+  - component: {fileID: 557712848}
+  m_Layer: 6
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -807,6 +808,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557712843}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &557712848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557712843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c303ce16fe68640b525408728b4ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.BaseInteractable
+  _message: Hello world
 --- !u!1 &567374869
 GameObject:
   m_ObjectHideFlags: 0

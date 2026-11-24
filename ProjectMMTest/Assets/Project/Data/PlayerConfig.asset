@@ -17,3 +17,8 @@ MonoBehaviour:
   _cameraSensitivity: 0.08
   _pitchMin: -30
   _pitchMax: 80
+  _interactLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _interactionRange: 5
+  _interactionRadius: 0.25
