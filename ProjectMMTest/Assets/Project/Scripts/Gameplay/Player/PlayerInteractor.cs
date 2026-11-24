@@ -1,3 +1,4 @@
+using MMTest.GameEvents;
 using UnityEngine;
 
 namespace MMTest.Gameplay.Player
@@ -43,6 +44,7 @@ namespace MMTest.Gameplay.Player
             if(found != _focused)
             {
                 _focused = found;
+                GameplayEvents.RaiseFocusChanged(_focused);
             }
         }
 
