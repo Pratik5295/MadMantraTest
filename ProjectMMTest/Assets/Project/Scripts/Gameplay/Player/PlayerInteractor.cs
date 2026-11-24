@@ -22,7 +22,7 @@ namespace MMTest.Gameplay.Player
 
         private void OnInteract()
         {
-            if(_focused != null)
+            if(_focused != null && _focused.CanInteract)
             {
                 _focused.Interact(this);
             }

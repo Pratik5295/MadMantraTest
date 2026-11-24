@@ -35,11 +35,6 @@ namespace MMTest.Gameplay.Player
 
         }
 
-        private void Start()
-        {
-            EnablePlayerInput();   //Keeping it active by default for now
-        }
-
         private void InitializeComponents()
         {
             if (_components == null || _components.Count == 0) return;
@@ -66,8 +61,9 @@ namespace MMTest.Gameplay.Player
             _playerInteractor.enabled = interact;
         }
 
-        public void EnablePlayerInput() => _inputReader.EnablePlayerInput();
-        public void DisablePlayerInput() => _inputReader.DisablePlayerInput();
+        public void SwitchToGameplayInput() => _inputReader.SwitchToGameplayInput();
+        public void SwitchToPuzzleInput() => _inputReader.SwitchToPuzzleInput();
+        public void DisableAllInput() => _inputReader.DisableAllInput();
 
         #endregion
 

@@ -8,7 +8,7 @@ namespace MMTest.Gameplay
         public override void Enter(GamePlayer player)
         {
             Debug.Log("Entered Gameplay State");
-            player.EnablePlayerInput();
+            player.SwitchToGameplayInput();
             player.SetControls(true, true, true);
         }
     }

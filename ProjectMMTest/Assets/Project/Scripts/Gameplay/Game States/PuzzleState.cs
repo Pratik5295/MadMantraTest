@@ -9,6 +9,7 @@ namespace MMTest.Gameplay
         {
             Debug.Log("Switching to puzzle state");
             player.SetControls(false, true, false);
+            player.SwitchToPuzzleInput();
         }
     }
 }
