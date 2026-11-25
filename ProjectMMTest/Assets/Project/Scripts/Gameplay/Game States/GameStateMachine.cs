@@ -13,7 +13,6 @@ namespace MMTest.Gameplay
 
         //Various States
         public GameplayState GameplayState { get; } = new GameplayState();
-        public PuzzleState PuzzleState { get; } = new PuzzleState();
         public DialogueState DialogueState { get; } = new DialogueState();
 
 
@@ -29,7 +28,10 @@ namespace MMTest.Gameplay
         }
 
         public void SwitchToGameplay() => ChangeMode(GameplayState);
-        public void SwitchToPuzzleMode() => ChangeMode(PuzzleState);
+        public void SwitchToPuzzleMode(PuzzleInteractor puzzle)
+        {
+            ChangeMode(new PuzzleState(puzzle));
+        }
 
         public void SwitchToDialogueMode() => ChangeMode(DialogueState);
 

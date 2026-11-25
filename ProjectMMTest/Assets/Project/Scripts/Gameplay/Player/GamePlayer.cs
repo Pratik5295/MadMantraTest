@@ -16,6 +16,9 @@ namespace MMTest.Gameplay.Player
         private GameStateMachine _stateMachine;
 
         [SerializeField]
+        private PlayerCamera _playerCamera;
+
+        [SerializeField]
         private InputReader _inputReader;
         [SerializeField]
         private PlayerConfig _config;
@@ -70,6 +73,20 @@ namespace MMTest.Gameplay.Player
         public void SwitchToGameplayInput() => _inputReader.SwitchToGameplayInput();
         public void SwitchToPuzzleInput() => _inputReader.SwitchToPuzzleInput();
         public void DisableAllInput() => _inputReader.DisableAllInput();
+
+        #endregion
+
+        #region Camera Section
+
+        public void FocusCamera(Transform focusPoint)
+        {
+            _playerCamera.FocusCamera(focusPoint);
+        }
+
+        public void ReleaseCamera()
+        {
+            _playerCamera.ReleaseCamera();
+        }
 
         #endregion
 
