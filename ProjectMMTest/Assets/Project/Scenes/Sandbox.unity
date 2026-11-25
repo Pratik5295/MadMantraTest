@@ -659,6 +659,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374936716}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &398970952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 398970953}
+  - component: {fileID: 398970954}
+  m_Layer: 0
+  m_Name: Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &398970953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398970952}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1758302631}
+  m_Father: {fileID: 1534169433}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &398970954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398970952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5303e2d1049af41aeb007acc66fbad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.Door
+  _pivot: {fileID: 398970953}
+  _openAngle: 90
+  _duration: 3
 --- !u!1 &404863545
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,10 +1037,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 557712844}
-  - {fileID: 1758302631}
   - {fileID: 1102421036}
   - {fileID: 474761397}
   - {fileID: 811229023}
+  - {fileID: 1534169433}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &496359807
@@ -1025,7 +1073,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.Managers.DialogueManager
   _settingsConfig: {fileID: 11400000, guid: bdafbd8a0d0e9b74eaec2936ca0f2942, type: 2}
-  _dialogueUI: {fileID: 1495501412}
 --- !u!4 &496359809
 Transform:
   m_ObjectHideFlags: 0
@@ -1654,7 +1701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &742330461
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2172,11 +2219,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1758302631}
+    m_TransformParent: {fileID: 1534169433}
     m_Modifications:
     - target: {fileID: 333235952805608192, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
       propertyPath: m_Name
       value: Base-Triggerable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615787613904187632, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615787613904187632, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4615787613904187632, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2188,7 +2243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4615787613904187632, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.08
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: 4615787613904187632, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2196,15 +2251,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4615787613904187632, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4615787613904187632, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4615787613904187632, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4615787613904187632, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2224,7 +2279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7363036039858200698, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
       propertyPath: m_Size.z
-      value: 3
+      value: 9.41
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2396,17 +2451,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 717897734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1495501412 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4576057870042810320, guid: 95f8033af695fe44784635c77667cd40, type: 3}
-  m_PrefabInstance: {fileID: 7725372810365894027}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a10016069785d0b4cabd5c17c325e459, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MMTest.UI.DialogueUI
 --- !u!1 &1508481998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2521,6 +2565,55 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508481998}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1534169432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1534169433}
+  - component: {fileID: 1534169434}
+  m_Layer: 0
+  m_Name: Door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1534169433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534169432}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.14, z: 9.34}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1097919076}
+  - {fileID: 398970953}
+  m_Father: {fileID: 494819347}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1534169434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534169432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d04eff53650ef64b855662a9c654ed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.DoorInteractable
+  _message: Door is locked
+  _trigger: {fileID: 2068529307}
+  _door: {fileID: 398970954}
 --- !u!1 &1758302630
 GameObject:
   m_ObjectHideFlags: 0
@@ -2533,7 +2626,6 @@ GameObject:
   - component: {fileID: 1758302634}
   - component: {fileID: 1758302633}
   - component: {fileID: 1758302632}
-  - component: {fileID: 1758302635}
   m_Layer: 6
   m_Name: Door
   m_TagString: Untagged
@@ -2550,12 +2642,11 @@ Transform:
   m_GameObject: {fileID: 1758302630}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.76, y: 3.42, z: 10.1}
+  m_LocalPosition: {x: 1.5, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1097919076}
-  m_Father: {fileID: 494819347}
+  m_Children: []
+  m_Father: {fileID: 398970953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1758302632
 BoxCollider:
@@ -2635,20 +2726,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758302630}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1758302635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758302630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d04eff53650ef64b855662a9c654ed0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.DoorInteractable
-  _message: Door is locked
-  _trigger: {fileID: 2068529307}
 --- !u!1 &1954501828
 GameObject:
   m_ObjectHideFlags: 0
