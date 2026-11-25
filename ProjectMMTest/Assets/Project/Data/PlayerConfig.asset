@@ -25,3 +25,6 @@ MonoBehaviour:
   _puzzleElementLayer:
     serializedVersion: 2
     m_Bits: 128
+  _dialogueYawLimit: 15
+  _dialoguePitchLimit: 12
+  _dialogueReturnSpeed: 3

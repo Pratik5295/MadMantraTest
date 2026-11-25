@@ -31,6 +31,8 @@ namespace MMTest.Gameplay.Player
 
         private IInputEvents _input => _inputReader;
 
+        public PlayerLook Look => _playerLook;
+
         private void Awake()
         {
             if (_input == null)

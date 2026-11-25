@@ -40,5 +40,15 @@ namespace MMTest.Data
         [SerializeField]
         private LayerMask _puzzleElementLayer;
         public LayerMask PuzzleElementLayer => _puzzleElementLayer;
+
+        //Dialogue Look
+        [SerializeField] private float _dialogueYawLimit;
+        public float DialogueYawLimit => _dialogueYawLimit;
+
+        [SerializeField] private float _dialoguePitchLimit;
+        public float DialoguePitchLimit => _dialoguePitchLimit;
+
+        [SerializeField] private float _dialogueReturnSpeed;
+        public float DialogueReturnSpeed => _dialogueReturnSpeed;
     }
 }

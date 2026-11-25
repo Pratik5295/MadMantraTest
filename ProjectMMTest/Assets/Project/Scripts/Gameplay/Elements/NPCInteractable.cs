@@ -10,12 +10,15 @@ namespace MMTest.Gameplay
         [SerializeField]
         private DialogueSO _dialogue;
 
+        [SerializeField]
+        private Transform _npc;
+
         public override void Interact(PlayerInteractor interactor)
         {
             //Start dialogue
             DialogueManager.Instance.SetDialogue(_dialogue);
 
-            interactor.StateMachine.SwitchToDialogueMode();
+            interactor.StateMachine.SwitchToDialogueMode(_npc);
         }
     }
 }
