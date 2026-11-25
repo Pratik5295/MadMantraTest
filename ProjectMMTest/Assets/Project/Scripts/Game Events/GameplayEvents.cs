@@ -20,5 +20,8 @@ namespace MMTest.GameEvents
         public static event Action<Vector2> OnPuzzleLookInput;
 
         public static void BroadcastPuzzleMousePos(Vector2 pos) => OnPuzzleLookInput?.Invoke(pos);
+
+        //Settings Events
+
     }
 }

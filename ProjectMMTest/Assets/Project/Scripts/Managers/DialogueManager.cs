@@ -8,6 +8,9 @@ namespace MMTest.Managers
     {
         public static DialogueManager Instance { get; private set; }
 
+        [SerializeField]
+        private SettingsConfig _settingsConfig; // TODO:Move to game Manager separately
+
         public Action<DialogueSO> OnDialogueStart;
 
         private void Awake()
