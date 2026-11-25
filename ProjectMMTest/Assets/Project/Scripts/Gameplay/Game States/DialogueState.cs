@@ -6,7 +6,7 @@ namespace MMTest.Gameplay
     {
         public override void Enter(GamePlayer player)
         {
-            player.SetControls(false, true, false, false, true);
+            player.SetControls(false, false, false, false, true);
         }
     }
 }

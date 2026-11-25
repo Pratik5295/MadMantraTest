@@ -1,4 +1,5 @@
 
+using MMTest.Data;
 using MMTest.Gameplay;
 using System;
 using UnityEngine;
@@ -21,7 +22,16 @@ namespace MMTest.GameEvents
 
         public static void BroadcastPuzzleMousePos(Vector2 pos) => OnPuzzleLookInput?.Invoke(pos);
 
-        //Settings Events
+        //Dialogue Events (Move to UI Events class TODO:)
+        
+        public static event Action<DialogueSO> OnDialogueStart;
+        public static void RaiseDialogueStarted(DialogueSO dialogue) => OnDialogueStart?.Invoke(dialogue);
+
+        public static event Action OnDialogueNext;
+        public static void RaiseDialogueNext() => OnDialogueNext?.Invoke(); 
+
+        public static event Action OnDialogueEnded;
+        public static void RaiseDialogueEnded() => OnDialogueEnded?.Invoke();
 
     }
 }

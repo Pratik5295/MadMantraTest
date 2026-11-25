@@ -1,4 +1,5 @@
 using MMTest.Data;
+using MMTest.GameEvents;
 using MMTest.Managers;
 using System.Collections;
 using TMPro;
@@ -16,6 +17,7 @@ namespace MMTest.UI
         private TextMeshProUGUI _messageText;   //Where message will be shown
 
         private int _index = 0; //Counter to keep incrementing for no of messages
+        private int _maxLines; //Number of max lines in dialogue
 
         private float _delayBetweenCharacters;
         private Coroutine _typingCoroutine;
@@ -25,7 +27,8 @@ namespace MMTest.UI
 
         private void OnEnable()
         {
-            DialogueManager.Instance.OnDialogueStart += OnDialogueStart;
+            GamePlayEvents.OnDialogueStart += OnDialogueStart;
+            GamePlayEvents.OnDialogueNext += OnNextInput;
         }
 
         private void Start()
@@ -36,13 +39,15 @@ namespace MMTest.UI
 
         private void OnDisable()
         {
-            DialogueManager.Instance.OnDialogueStart -= OnDialogueStart;
+            GamePlayEvents.OnDialogueStart -= OnDialogueStart;
+            GamePlayEvents.OnDialogueNext -= OnNextInput;
         }
 
         private void OnDialogueStart(DialogueSO dialogue)
         {
             _dialogue = dialogue;
             var Lines = _dialogue.Lines;
+            _maxLines = Lines.Count;
 
             _index = 0;
             _messageToShow = Lines[_index].text;
@@ -60,12 +65,6 @@ namespace MMTest.UI
         {
             _canvasGroup.alpha = 0.0f;
         }
-
-        private void ShowLine(string line)
-        {
-            _messageText.text = line;
-        }
-
         private IEnumerator StartTypingCoroutine(string message)
         {
             _messageText.text = message;
@@ -73,9 +72,9 @@ namespace MMTest.UI
             _messageText.maxVisibleCharacters = 0;
             _isTyping = true;
 
-            int totalCharCount = _messageText.textInfo.characterCount;
-
             _messageText.ForceMeshUpdate();
+
+            int totalCharCount = _messageText.textInfo.characterCount;
 
             for (int i = 0; i <= totalCharCount; i++)
             {
@@ -94,12 +93,29 @@ namespace MMTest.UI
                 StopCoroutine(_typingCoroutine);
                 _isTyping = false;
                 _typingCoroutine = null;
-                _messageText.text = _messageToShow;
+                _messageText.maxVisibleCharacters = _messageText.textInfo.characterCount;
+                return;
             }
 
             _index++;
+            if(_index >= _maxLines)
+            {
+                //Dialogue is completed
+                EndDialogueUI();
+                return;
+            }
             _messageToShow = _dialogue.Lines[_index].text;
             _typingCoroutine = StartCoroutine(StartTypingCoroutine(_messageToShow));
+        }
+
+        private void EndDialogueUI()
+        {
+            //Notify Dialogue Manager
+            DialogueManager.Instance.OnDialogueEnd();
+
+            _dialogue = null;
+            _index = 0;
+            HideUI();
         }
     }
 }
