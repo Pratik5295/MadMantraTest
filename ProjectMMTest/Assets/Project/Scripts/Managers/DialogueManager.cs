@@ -11,6 +11,7 @@ namespace MMTest.Managers
         [SerializeField]
         private SettingsConfig _settingsConfig; // TODO:Move to game Manager separately
 
+        public Func<SettingsConfig> GetSettingsConfig;
         public Action<DialogueSO> OnDialogueStart;
 
         private void Awake()
@@ -24,6 +25,16 @@ namespace MMTest.Managers
             Instance = this;
 
             DontDestroyOnLoad(gameObject);
+        }
+
+        private void Start()
+        {
+            GetSettingsConfig += () => _settingsConfig;
+        }
+
+        private void OnDestroy()
+        {
+            GetSettingsConfig -= () => _settingsConfig;
         }
 
         public void SetDialogue(DialogueSO dialogue)

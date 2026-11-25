@@ -1,5 +1,6 @@
 using MMTest.Data;
 using MMTest.Managers;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -16,6 +17,10 @@ namespace MMTest.UI
 
         private int _index = 0; //Counter to keep incrementing for no of messages
 
+        private float _delayBetweenCharacters;
+        private Coroutine _typingCoroutine;
+        private bool _isTyping = false;
+
         private void OnEnable()
         {
             DialogueManager.Instance.OnDialogueStart += OnDialogueStart;
@@ -24,6 +29,7 @@ namespace MMTest.UI
         private void Start()
         {
             HideUI();
+            _delayBetweenCharacters = (float)DialogueManager.Instance.GetSettingsConfig?.Invoke().TypingDelayBetweenCharacters;
         }
 
         private void OnDisable()
@@ -35,8 +41,10 @@ namespace MMTest.UI
         {
             var Lines = dialogue.Lines;
 
-            ShowLine(Lines[0].text);
+            
             ShowUI();
+
+            _typingCoroutine = StartCoroutine(StartTypingCoroutine(Lines[0].text));
         }
 
         private void ShowUI()
@@ -52,6 +60,27 @@ namespace MMTest.UI
         private void ShowLine(string line)
         {
             _messageText.text = line;
+        }
+
+        private IEnumerator StartTypingCoroutine(string message)
+        {
+            _messageText.text = message;
+
+            _messageText.maxVisibleCharacters = 0;
+            _isTyping = true;
+
+            int totalCharCount = _messageText.textInfo.characterCount;
+
+            _messageText.ForceMeshUpdate();
+
+            for (int i = 0; i <= totalCharCount; i++)
+            {
+                _messageText.maxVisibleCharacters = i;
+                yield return new WaitForSeconds(_delayBetweenCharacters);
+            }
+
+            _isTyping = false;
+            _typingCoroutine = null;
         }
     }
 }

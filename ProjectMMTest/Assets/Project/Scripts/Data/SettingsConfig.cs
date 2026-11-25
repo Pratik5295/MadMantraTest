@@ -6,8 +6,8 @@ namespace MMTest.Data
     public class SettingsConfig: ScriptableObject
     {
         [SerializeField]
-        private float _dialogueCharPerSecond = 10f;
+        private float _delayBetweenCharacters = 0.05f;
 
-        public float DialogueCharPerSec => _dialogueCharPerSecond;
+        public float TypingDelayBetweenCharacters => _delayBetweenCharacters;
     }
 }
