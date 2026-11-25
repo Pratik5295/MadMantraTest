@@ -1,6 +1,5 @@
 using MMTest.GameEvents;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 namespace MMTest.Gameplay.Player
 {

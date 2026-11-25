@@ -14,6 +14,8 @@ namespace MMTest.Gameplay
         {
             //Start dialogue
             DialogueManager.Instance.SetDialogue(_dialogue);
+
+            interactor.StateMachine.SwitchToDialogueMode();
         }
     }
 }

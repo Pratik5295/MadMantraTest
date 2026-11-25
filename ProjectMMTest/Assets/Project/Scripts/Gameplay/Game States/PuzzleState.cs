@@ -7,7 +7,7 @@ namespace MMTest.Gameplay
     {
         public override void Enter(GamePlayer player)
         {
-            player.SetControls(false, false, false,true);
+            player.SetControls(false, false, false,true,false);
             player.SwitchToPuzzleInput();
         }
     }

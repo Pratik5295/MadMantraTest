@@ -20,6 +20,8 @@ namespace MMTest.UI
         private float _delayBetweenCharacters;
         private Coroutine _typingCoroutine;
         private bool _isTyping = false;
+        private string _messageToShow;
+        private DialogueSO _dialogue;
 
         private void OnEnable()
         {
@@ -39,12 +41,14 @@ namespace MMTest.UI
 
         private void OnDialogueStart(DialogueSO dialogue)
         {
-            var Lines = dialogue.Lines;
+            _dialogue = dialogue;
+            var Lines = _dialogue.Lines;
 
-            
+            _index = 0;
+            _messageToShow = Lines[_index].text;
             ShowUI();
 
-            _typingCoroutine = StartCoroutine(StartTypingCoroutine(Lines[0].text));
+            _typingCoroutine = StartCoroutine(StartTypingCoroutine(_messageToShow));
         }
 
         private void ShowUI()
@@ -81,6 +85,21 @@ namespace MMTest.UI
 
             _isTyping = false;
             _typingCoroutine = null;
+        }
+
+        public void OnNextInput()
+        {
+            if (_isTyping)
+            {
+                StopCoroutine(_typingCoroutine);
+                _isTyping = false;
+                _typingCoroutine = null;
+                _messageText.text = _messageToShow;
+            }
+
+            _index++;
+            _messageToShow = _dialogue.Lines[_index].text;
+            _typingCoroutine = StartCoroutine(StartTypingCoroutine(_messageToShow));
         }
     }
 }

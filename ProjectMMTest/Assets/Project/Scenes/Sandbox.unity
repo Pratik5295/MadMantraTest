@@ -1025,6 +1025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.Managers.DialogueManager
   _settingsConfig: {fileID: 11400000, guid: bdafbd8a0d0e9b74eaec2936ca0f2942, type: 2}
+  _dialogueUI: {fileID: 1495501412}
 --- !u!4 &496359809
 Transform:
   m_ObjectHideFlags: 0
@@ -2395,6 +2396,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 717897734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1495501412 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4576057870042810320, guid: 95f8033af695fe44784635c77667cd40, type: 3}
+  m_PrefabInstance: {fileID: 7725372810365894027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10016069785d0b4cabd5c17c325e459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MMTest.UI.DialogueUI
 --- !u!1 &1508481998
 GameObject:
   m_ObjectHideFlags: 0

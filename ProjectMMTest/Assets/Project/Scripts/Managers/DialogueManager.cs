@@ -1,4 +1,5 @@
 using MMTest.Data;
+using MMTest.UI;
 using System;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ namespace MMTest.Managers
 
         [SerializeField]
         private SettingsConfig _settingsConfig; // TODO:Move to game Manager separately
+
+        [SerializeField]
+        private DialogueUI _dialogueUI;
 
         public Func<SettingsConfig> GetSettingsConfig;
         public Action<DialogueSO> OnDialogueStart;
@@ -40,6 +44,17 @@ namespace MMTest.Managers
         public void SetDialogue(DialogueSO dialogue)
         {
             OnDialogueStart?.Invoke(dialogue);
+        }
+
+        public void OnDialogueNext()
+        {
+            if(_dialogueUI == null)
+            {
+                Debug.LogError("Missing Dialogue UI component");
+                return;
+            }
+
+            _dialogueUI.OnNextInput();
         }
     }
 }

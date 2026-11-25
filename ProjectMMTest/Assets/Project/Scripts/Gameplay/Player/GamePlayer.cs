@@ -24,6 +24,7 @@ namespace MMTest.Gameplay.Player
         private PlayerLook _playerLook;
         private PlayerInteractor _playerInteractor;
         private PlayerPuzzleComponent _playerPuzzleComponent; //Handles all the pouzzle related inputs and interactions
+        private PlayerDialogueComponent _playerDialogueComponent;
 
         private IInputEvents _input => _inputReader;
 
@@ -46,6 +47,7 @@ namespace MMTest.Gameplay.Player
                 if(component is PlayerLook) _playerLook = (PlayerLook)component;
                 if(component is PlayerInteractor) _playerInteractor = (PlayerInteractor)component;
                 if(component is PlayerPuzzleComponent) _playerPuzzleComponent = (PlayerPuzzleComponent)component;
+                if(component is PlayerDialogueComponent) _playerDialogueComponent = (PlayerDialogueComponent)component;
 
                 component.Inititalize(_input, _config, _stateMachine);
             }
@@ -55,13 +57,14 @@ namespace MMTest.Gameplay.Player
 
         #region State Handling
 
-        public void SetControls(bool movement, bool look, bool interact, bool puzzle)
+        public void SetControls(bool movement, bool look, bool interact, bool puzzle, bool dialogue)
         {
             //Set whatever is allowed
             _playerMovement.enabled = movement;
             _playerLook.enabled = look;
             _playerInteractor.enabled = interact;
             _playerPuzzleComponent.enabled = puzzle;
+            _playerDialogueComponent.enabled = dialogue;
         }
 
         public void SwitchToGameplayInput() => _inputReader.SwitchToGameplayInput();
