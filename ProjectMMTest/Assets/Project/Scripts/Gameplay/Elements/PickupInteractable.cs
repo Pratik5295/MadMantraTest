@@ -3,6 +3,7 @@ using UnityEngine;
 using MMTest.Data;
 using MMTest.Managers;
 using UnityEngine.Events;
+using MMTest.GameEvents;
 
 namespace MMTest.Gameplay
 {
@@ -28,6 +29,8 @@ namespace MMTest.Gameplay
             InventoryManager.Instance?.ItemPickedUp(_data);
 
             OnItemPickedUp?.Invoke();
+
+            GamePlayEvents.NotifyToasterMessage(Message);
         }
     }
 }
