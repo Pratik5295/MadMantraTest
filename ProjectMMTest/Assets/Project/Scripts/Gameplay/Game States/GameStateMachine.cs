@@ -37,6 +37,11 @@ namespace MMTest.Gameplay
             ChangeMode(new DialogueState(npc));
         }
 
+        public void SwitchToCinematicMode()
+        {
+            ChangeMode(new CinematicState());
+        }
+
 
 
         private void ChangeMode(GameState newState)

@@ -32,6 +32,7 @@ namespace MMTest.Gameplay.Player
         private IInputEvents _input => _inputReader;
 
         public PlayerLook Look => _playerLook;
+        public GameStateMachine State => _stateMachine;
 
         private void Awake()
         {
