@@ -2,6 +2,7 @@ using MMTest.Gameplay.Player;
 using UnityEngine;
 using MMTest.Data;
 using MMTest.Managers;
+using UnityEngine.Events;
 
 namespace MMTest.Gameplay
 {
@@ -15,6 +16,8 @@ namespace MMTest.Gameplay
 
         public bool CanBePicked => _canBePicked;
 
+        public UnityEvent OnItemPickedUp;
+
         public void Unlock() { _canBePicked = true; }
         public override void Interact(PlayerInteractor interactor)
         {
@@ -23,6 +26,8 @@ namespace MMTest.Gameplay
             gameObject.SetActive(false);
 
             InventoryManager.Instance?.ItemPickedUp(_data);
+
+            OnItemPickedUp?.Invoke();
         }
     }
 }
