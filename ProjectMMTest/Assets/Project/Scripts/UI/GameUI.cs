@@ -1,7 +1,7 @@
 using MMTest.GameEvents;
 using MMTest.Gameplay;
+using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace MMTest.UI
 {
@@ -10,26 +10,32 @@ namespace MMTest.UI
         //Press E to interact UI
         [SerializeField] private GameObject _interactUI;
 
+        [SerializeField] private GameObject _toasterUI;
+        [SerializeField] private TextMeshProUGUI _toasterMessage;
+
         [SerializeField] private RectTransform _cursor;
 
         private void OnEnable()
         {
-            GameEvents.GamePlayEvents.OnFocusedChanged += OnFocusInteractableChanged;
-            GameEvents.GamePlayEvents.OnPuzzleLookInput += OnPuzzleCursorHandling;
-            GameEvents.GamePlayEvents.OnGameStateChanged += OnGameStateChanged;
+            GamePlayEvents.OnFocusedChanged += OnFocusInteractableChanged;
+            GamePlayEvents.OnPuzzleLookInput += OnPuzzleCursorHandling;
+            GamePlayEvents.OnGameStateChanged += OnGameStateChanged;
+            GamePlayEvents.OnShowToasterMessage += SetToasterMessage;
         }
 
         private void Start()
         {
             _interactUI.SetActive(false);
+            HideToaster();
         }
 
 
         private void OnDisable()
         {
-            GameEvents.GamePlayEvents.OnFocusedChanged -= OnFocusInteractableChanged;
-            GameEvents.GamePlayEvents.OnPuzzleLookInput -= OnPuzzleCursorHandling;
-            GameEvents.GamePlayEvents.OnGameStateChanged -= OnGameStateChanged;
+            GamePlayEvents.OnFocusedChanged -= OnFocusInteractableChanged;
+            GamePlayEvents.OnPuzzleLookInput -= OnPuzzleCursorHandling;
+            GamePlayEvents.OnGameStateChanged -= OnGameStateChanged;
+            GamePlayEvents.OnShowToasterMessage -= SetToasterMessage;
         }
 
         #region Interaction Section
@@ -39,6 +45,29 @@ namespace MMTest.UI
 
             _interactUI.SetActive(show);
         }
+        #endregion
+
+        #region Toaster Section
+
+        private void ShowToaster()
+        {
+            _toasterUI.SetActive(true);
+        }
+
+        private void HideToaster()
+        {
+            _toasterUI.SetActive(false);
+        }
+
+        private void SetToasterMessage(string message)
+        {
+            _toasterMessage.text = message;
+
+            ShowToaster();
+
+            Invoke(nameof(HideToaster), 2f);
+        }
+
         #endregion
 
         private void OnPuzzleCursorHandling(Vector2 pos)

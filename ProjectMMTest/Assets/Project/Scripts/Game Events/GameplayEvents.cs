@@ -33,5 +33,8 @@ namespace MMTest.GameEvents
         public static event Action OnDialogueEnded;
         public static void RaiseDialogueEnded() => OnDialogueEnded?.Invoke();
 
+        public static event Action<string> OnShowToasterMessage;
+        public static void NotifyToasterMessage(string message) => OnShowToasterMessage?.Invoke(message);
+
     }
 }

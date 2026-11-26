@@ -1,3 +1,4 @@
+using MMTest.GameEvents;
 using MMTest.Gameplay.Player;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace MMTest.Gameplay
         {
             if (_door.IsLocked)
             {
+                GamePlayEvents.NotifyToasterMessage(Message);
                 return;
             }
 

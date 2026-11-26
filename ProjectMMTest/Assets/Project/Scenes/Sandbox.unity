@@ -13794,7 +13794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d04eff53650ef64b855662a9c654ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.DoorInteractable
-  _message: Door is locked
+  _message: Door is locked.
   _trigger: {fileID: 674728523}
   _door: {fileID: 1930865460}
 --- !u!1 &1854939638
