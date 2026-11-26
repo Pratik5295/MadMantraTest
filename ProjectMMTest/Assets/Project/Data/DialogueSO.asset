@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DialogueSO
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.Data.DialogueSO
   _lines:
-  - text: First line
-  - text: Second line
-  - text: Thrid line
+  - text: You managed to get out of room! I had forgotten about the spare key inside the locker
+  - text: I will be careful with my next victim. Now that you have escaped. Here is a very important question.
+  - text: Do you have any chocolate, and are willing to share? I havent had chocolate in decades
+  - text: No!? Thats rude. Fine. I am leaving. Good luck escaping!
