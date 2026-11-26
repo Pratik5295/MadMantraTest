@@ -13,7 +13,9 @@ namespace MMTest.Gameplay
         public override void Enter(GamePlayer player)
         {
             player.SetControls(false, false, false, false, false);
-            player.FocusCamera(_lookAt);
+
+            if(_lookAt != null) 
+                player.FocusCamera(_lookAt);
         }
 
         public override void Exit(GamePlayer player)

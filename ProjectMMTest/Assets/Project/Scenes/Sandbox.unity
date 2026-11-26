@@ -5524,6 +5524,10 @@ MonoBehaviour:
   _headTransform: {fileID: 706643646}
   _headTracker: {fileID: 984092735}
   _focusPoint: {fileID: 1204615405}
+  _director: {fileID: 1639207079}
+  OnConversationComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &811229025
 Animator:
   serializedVersion: 7
