@@ -9,7 +9,10 @@ namespace MMTest.Gameplay
         [SerializeField] private Door _door;
         public override void Interact(PlayerInteractor interactor)
         {
-            Debug.Log(Message);
+            if (_door.IsLocked)
+            {
+                return;
+            }
 
             if (_door.IsOpen) _door.Close();
 

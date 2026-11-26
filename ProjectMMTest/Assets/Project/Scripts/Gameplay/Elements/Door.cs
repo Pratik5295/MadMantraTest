@@ -20,10 +20,12 @@ namespace MMTest.Gameplay
 
         private void Awake()
         {
-            _closedRotation = _pivot.localRotation;
+            _closedRotation = Quaternion.identity;
         }
 
         public void Unlock() => _isLocked = false;
+
+        public void Lock() => _isLocked = true;
         public void OpenWithPlayer(Vector3 playerPosition)
         {
             if (_isLocked) return;
