@@ -21,6 +21,9 @@ namespace MMTest.Gameplay
         private NPCHeadTracker _headTracker;
 
         [SerializeField]
+        private NPCAnimController _npcAnimController;
+
+        [SerializeField]
         private Transform _focusPoint; //Focus for dialgoue
 
         [SerializeField]
@@ -52,6 +55,8 @@ namespace MMTest.Gameplay
             DialogueManager.Instance.SetDialogue(_dialogue);
 
             _interactor.StateMachine.SwitchToDialogueMode(this);
+
+            _npcAnimController.StartTalking();
         }
 
         protected override void OnPlayerEnter(GameObject player)
@@ -68,6 +73,8 @@ namespace MMTest.Gameplay
 
         private void OnDialogueEnded()
         {
+            _npcAnimController.StopTalking();
+
             _interactor.StateMachine.SwitchToCinematicMode();
 
             CinematicManager.Instance.StartCinematic(_director, GameEnd);

@@ -9,6 +9,8 @@ namespace MMTest.Gameplay
         private float _moveValue;
 
         private static readonly int _moveParam = Animator.StringToHash("Move");
+        private static readonly int _talkingParam = Animator.StringToHash("Talking");
+        private static readonly int _disappointedParam = Animator.StringToHash("Disappointed");
 
         private void Awake()
         {
@@ -30,6 +32,16 @@ namespace MMTest.Gameplay
         private void UpdateAnimator()
         {
             _animator.SetFloat(_moveParam, _moveValue);
+        }
+
+        public void StartTalking()
+        {
+            _animator.SetBool(_talkingParam, true);
+        }
+
+        public void StopTalking()
+        {
+            _animator.SetBool(_talkingParam, false);
         }
     }
 }
