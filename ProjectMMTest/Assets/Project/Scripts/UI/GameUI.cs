@@ -15,17 +15,21 @@ namespace MMTest.UI
 
         [SerializeField] private RectTransform _cursor;
 
+        [SerializeField] private GameObject _endScreen;
+
         private void OnEnable()
         {
             GamePlayEvents.OnFocusedChanged += OnFocusInteractableChanged;
             GamePlayEvents.OnPuzzleLookInput += OnPuzzleCursorHandling;
             GamePlayEvents.OnGameStateChanged += OnGameStateChanged;
             GamePlayEvents.OnShowToasterMessage += SetToasterMessage;
+            GamePlayEvents.OnGameEnd += OnGameEnd;
         }
 
         private void Start()
         {
             _interactUI.SetActive(false);
+            _endScreen.SetActive(false);
             HideToaster();
         }
 
@@ -36,6 +40,7 @@ namespace MMTest.UI
             GamePlayEvents.OnPuzzleLookInput -= OnPuzzleCursorHandling;
             GamePlayEvents.OnGameStateChanged -= OnGameStateChanged;
             GamePlayEvents.OnShowToasterMessage -= SetToasterMessage;
+            GamePlayEvents.OnGameEnd -= OnGameEnd;
         }
 
         #region Interaction Section
@@ -84,6 +89,16 @@ namespace MMTest.UI
             _cursor.localPosition = Vector3.zero;
 
             if (state is not GameplayState) _interactUI.SetActive(false); 
+        }
+
+        private void OnGameEnd()
+        {
+            _endScreen.SetActive(true);
+        }
+
+        public void StartGame()
+        {
+
         }
     }
 }

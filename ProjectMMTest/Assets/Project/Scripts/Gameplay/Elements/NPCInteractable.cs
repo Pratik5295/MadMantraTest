@@ -84,6 +84,8 @@ namespace MMTest.Gameplay
         {
             //TODO: If Game Manager move it there
             Debug.Log("Game ended");
+
+            GamePlayEvents.NotifyGameEnd();
         }
     }
 }

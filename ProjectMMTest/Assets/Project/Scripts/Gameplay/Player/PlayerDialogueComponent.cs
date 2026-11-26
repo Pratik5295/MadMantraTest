@@ -35,7 +35,7 @@ namespace MMTest.Gameplay.Player
 
         private void OnDialogueEnded()
         {
-            _stateMachine.SwitchToGameplay();
+            //_stateMachine.SwitchToGameplay();
         }
     }
 }

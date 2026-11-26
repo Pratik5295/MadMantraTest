@@ -36,5 +36,12 @@ namespace MMTest.GameEvents
         public static event Action<string> OnShowToasterMessage;
         public static void NotifyToasterMessage(string message) => OnShowToasterMessage?.Invoke(message);
 
+        //UI Events
+        public static event Action OnGameStart;
+        public static void NotifyGameStart() => OnGameStart?.Invoke();
+
+        public static event Action OnGameEnd;
+        public static void NotifyGameEnd() => OnGameEnd?.Invoke();
+
     }
 }
