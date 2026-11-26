@@ -30,9 +30,7 @@ namespace MMTest.Gameplay
         {
             _player = player.GetComponent<GamePlayer>();
 
-            _player.State.SwitchToCinematicMode();
-
-            CinematicManager.Instance.StartCinematic(_scene, OnCinematicComplete);
+            TriggerCinematicScene();
         }
 
         protected virtual void OnCinematicComplete()
@@ -42,6 +40,15 @@ namespace MMTest.Gameplay
             _player = null;
 
             _isCompleted = true;
+        }
+
+        public void TriggerCinematicScene()
+        {
+            if (_isCompleted) return; //Allow playing the cinematic only once
+
+            _player.State.SwitchToCinematicMode();
+
+            CinematicManager.Instance.StartCinematic(_scene, OnCinematicComplete);
         }
     }
 }
