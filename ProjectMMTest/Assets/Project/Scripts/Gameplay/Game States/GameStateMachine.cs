@@ -32,7 +32,7 @@ namespace MMTest.Gameplay
             ChangeMode(new PuzzleState(puzzle));
         }
 
-        public void SwitchToDialogueMode(Transform npc)
+        public void SwitchToDialogueMode(NPCInteractable npc)
         {
             ChangeMode(new DialogueState(npc));
         }

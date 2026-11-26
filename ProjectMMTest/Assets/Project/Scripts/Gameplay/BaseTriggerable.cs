@@ -6,14 +6,14 @@ namespace MMTest.Gameplay
     [RequireComponent(typeof(Collider))]
     public class BaseTriggerable : MonoBehaviour
     {
-        public event Action OnPlayerEnter;
+        public event Action<GameObject> OnPlayerEnter;
         public event Action OnPlayerExit;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(MetaConstants.PlayerTag))
             {
-                OnPlayerEnter?.Invoke();
+                OnPlayerEnter?.Invoke(other.gameObject);
             }
         }
 

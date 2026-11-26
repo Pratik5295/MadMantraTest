@@ -11,14 +11,35 @@ namespace MMTest.Gameplay
         private DialogueSO _dialogue;
 
         [SerializeField]
-        private Transform _npc;
+        private Transform _headTransform;
+
+        [SerializeField]
+        private NPCHeadTracker _headTracker;
+
+        [SerializeField]
+        private Transform _focusPoint; //Focus for dialgoue
+
+        public Transform FocusPoint => _focusPoint;
+        public Transform Head => _headTransform;
 
         public override void Interact(PlayerInteractor interactor)
         {
             //Start dialogue
             DialogueManager.Instance.SetDialogue(_dialogue);
 
-            interactor.StateMachine.SwitchToDialogueMode(_npc);
+            interactor.StateMachine.SwitchToDialogueMode(this);
+        }
+
+        protected override void OnPlayerEnter(GameObject player)
+        {
+            base.OnPlayerEnter(player);
+            _headTracker.SetTarget(player.transform);
+        }
+
+        protected override void OnPlayerExit()
+        {
+            base.OnPlayerExit();
+            _headTracker.SetTarget(null);
         }
     }
 }

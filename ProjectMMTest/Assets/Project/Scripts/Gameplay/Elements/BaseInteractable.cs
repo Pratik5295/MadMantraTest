@@ -13,6 +13,8 @@ namespace MMTest.Gameplay
 
         protected bool _withinRange = false;
 
+        protected GameObject _playerRef = null;
+
         public string Message => _message;
         public BaseTriggerable Trigger => _trigger;
         public bool WithinRange => _withinRange;
@@ -31,14 +33,16 @@ namespace MMTest.Gameplay
             _trigger.OnPlayerExit -= OnPlayerExit;
         }
 
-        protected virtual void OnPlayerEnter()
+        protected virtual void OnPlayerEnter(GameObject player)
         {
             _withinRange = true;
+            _playerRef = player;
         }
 
         protected virtual void OnPlayerExit()
         {
-            _withinRange &= false;
+            _withinRange = false;
+            _playerRef = null;
         }
     }
 }
