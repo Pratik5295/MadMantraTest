@@ -46,7 +46,7 @@ namespace MMTest.Gameplay
         {
             if (_isCompleted) return; //Allow playing the cinematic only once
 
-            _player.State.SwitchToCinematicMode();
+            _player.State.SwitchToCinematicMode(null);
 
             CinematicManager.Instance.StartCinematic(_scene, OnCinematicComplete);
         }

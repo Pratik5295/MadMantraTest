@@ -1,6 +1,9 @@
 using MMTest.Gameplay.Player;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Playables;
+using MMTest.Mangaers;
+using UnityEngine.Events;
 
 namespace MMTest.Gameplay
 {
@@ -8,16 +11,29 @@ namespace MMTest.Gameplay
     {
         [SerializeField] private Transform _focusPoint;
 
+        [SerializeField] private Transform _onSolvedLookPoint;
+
         [SerializeField]
         private List<BasePuzzleElement> _buttons;
 
+        [SerializeField]
+        private PlayableDirector _puzzleSolvedCinematic;
+
         private int _solvedCount = 0;
+        private bool _isSolved = false;
+
+        private PlayerInteractor _interactor;
 
         public Transform FocusPoint => _focusPoint;
 
+        public UnityEvent OnPuzzleSolvedEvent;
+
         public override void Interact(PlayerInteractor interactor)
         {
-            interactor.StateMachine.SwitchToPuzzleMode(this);
+            if (_isSolved) return;
+
+            _interactor = interactor;
+            _interactor.StateMachine.SwitchToPuzzleMode(this);
         }
 
         public void SubscribeListeners()
@@ -50,8 +66,26 @@ namespace MMTest.Gameplay
             if(_solvedCount == _buttons.Count)
             {
                 //Puzzle solved
-                Debug.Log("Puzzle solved, exiting now");
+                OnPuzzleSolved();
             }
+        }
+
+        private void OnPuzzleSolved()
+        {
+            _interactor.StateMachine.SwitchToCinematicMode(_onSolvedLookPoint);
+
+            CinematicManager.Instance.StartCinematic(_puzzleSolvedCinematic, ReturnToGameplay);
+
+            _isSolved = true;
+
+            OnPuzzleSolvedEvent?.Invoke();
+        }
+
+        private void ReturnToGameplay()
+        {
+            _interactor.StateMachine?.SwitchToGameplay();
+
+            _interactor = null;
         }
     }
 }

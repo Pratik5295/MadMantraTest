@@ -774,6 +774,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1025840285}
+  - {fileID: 1945151256}
+  - {fileID: 1639207078}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &139913562
@@ -921,6 +923,7 @@ Transform:
   - {fileID: 1420479291}
   - {fileID: 1964358059}
   - {fileID: 1585494842}
+  - {fileID: 2012187247}
   m_Father: {fileID: 2003152102}
   m_LocalEulerAnglesHint: {x: 0, y: 114.251, z: 0}
 --- !u!1 &176956399
@@ -3885,6 +3888,7 @@ GameObject:
   m_Component:
   - component: {fileID: 577847772}
   - component: {fileID: 577847773}
+  - component: {fileID: 577847774}
   m_Layer: 0
   m_Name: Pickup-Interactable
   m_TagString: Untagged
@@ -3926,6 +3930,36 @@ MonoBehaviour:
   _trigger: {fileID: 858602469}
   _canBePicked: 0
   _data: {fileID: 11400000, guid: 97b0fe96ec41a984d8d44ec5e2118a04, type: 2}
+--- !u!114 &577847774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577847771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalReceiver
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: cde7831a64c29274f8721d937e2e0b9c, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 577847773}
+          m_TargetAssemblyTypeName: MMTest.Gameplay.PickupInteractable, Assembly-CSharp
+          m_MethodName: Unlock
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &585264618
 GameObject:
   m_ObjectHideFlags: 0
@@ -5471,7 +5505,7 @@ Transform:
   - {fileID: 642235222}
   - {fileID: 1204615405}
   m_Father: {fileID: 494819347}
-  m_LocalEulerAnglesHint: {x: 0, y: 359.149, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 184.7213, z: 0}
 --- !u!114 &811229024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6154,6 +6188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base-Triggerable
       objectReference: {fileID: 0}
+    - target: {fileID: 333235952805608192, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4615787613904187632, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
       propertyPath: m_LocalScale.y
       value: 1
@@ -6225,7 +6263,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6632863841577332292, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
   m_PrefabInstance: {fileID: 858602467}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1257712124}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e96ad00dc314adf4e86741c63085b2d0, type: 3}
@@ -9502,7 +9540,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1025840285
 Transform:
   m_ObjectHideFlags: 0
@@ -10179,10 +10217,27 @@ MonoBehaviour:
   _message: Puzzle Interactor
   _trigger: {fileID: 241728736}
   _focusPoint: {fileID: 804117005}
+  _onSolvedLookPoint: {fileID: 2012187247}
   _buttons:
   - {fileID: 260570533}
   - {fileID: 2031160578}
   - {fileID: 2038282680}
+  _puzzleSolvedCinematic: {fileID: 1945151257}
+  OnPuzzleSolvedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1257712124}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1117033755
 GameObject:
   m_ObjectHideFlags: 0
@@ -10897,6 +10952,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253107424}
   m_Mesh: {fileID: 4300000, guid: f61ffdd53cab98e4eae2b5eb6a1d1450, type: 3}
+--- !u!1 &1257712124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 333235952805608192, guid: c7b9adf4bad84214f8e8586122eb73b0, type: 3}
+  m_PrefabInstance: {fileID: 858602467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1259258844
 GameObject:
   m_ObjectHideFlags: 0
@@ -13431,6 +13491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1585494842}
+  - component: {fileID: 1585494843}
   m_Layer: 0
   m_Name: Cabinet-Pivot
   m_TagString: Untagged
@@ -13454,6 +13515,28 @@ Transform:
   - {fileID: 743365121}
   m_Father: {fileID: 147344759}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1585494843
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585494841}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1604143593
 GameObject:
   m_ObjectHideFlags: 0
@@ -13657,6 +13740,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628473900}
   m_Mesh: {fileID: 4300004, guid: 9e7790d8396287a4f984bc6caa033656, type: 3}
+--- !u!1 &1639207077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1639207078}
+  - component: {fileID: 1639207079}
+  m_Layer: 0
+  m_Name: Cinematic Trigger - Final
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1639207078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639207077}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 131128284}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &1639207079
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639207077}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 02bd9c8d0e5eec04f8512ea6737350b9, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 5560004999858981577, guid: 031c53eed02101840862565791bb86cd, type: 2}
+    value: {fileID: 1585494843}
+  - key: {fileID: -3095392963587122705, guid: 031c53eed02101840862565791bb86cd, type: 2}
+    value: {fileID: 577847774}
+  - key: {fileID: 242224907243577880, guid: 02bd9c8d0e5eec04f8512ea6737350b9, type: 2}
+    value: {fileID: 811229025}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1001 &1640341113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13668,6 +13806,10 @@ PrefabInstance:
     - target: {fileID: 374289202576707483, guid: 78df1db2fbc8ec64f949fac0c05bf693, type: 3}
       propertyPath: m_Name
       value: rust_key
+      objectReference: {fileID: 0}
+    - target: {fileID: 374289202576707483, guid: 78df1db2fbc8ec64f949fac0c05bf693, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3705028537381535112, guid: 78df1db2fbc8ec64f949fac0c05bf693, type: 3}
       propertyPath: m_LocalScale.x
@@ -14500,6 +14642,59 @@ MonoBehaviour:
   _pivot: {fileID: 1930865458}
   _openAngle: 90
   _duration: 3
+--- !u!1 &1945151255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1945151256}
+  - component: {fileID: 1945151257}
+  m_Layer: 0
+  m_Name: Cinematic Trigger - Puzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1945151256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945151255}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 131128284}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &1945151257
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945151255}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 031c53eed02101840862565791bb86cd, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 5560004999858981577, guid: 031c53eed02101840862565791bb86cd, type: 2}
+    value: {fileID: 1585494843}
+  - key: {fileID: -3095392963587122705, guid: 031c53eed02101840862565791bb86cd, type: 2}
+    value: {fileID: 577847774}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &1954501828
 GameObject:
   m_ObjectHideFlags: 0
@@ -15330,6 +15525,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007924979}
   m_Mesh: {fileID: 4300000, guid: 4fb7b6ad085a0174dae2078cd871bbd5, type: 3}
+--- !u!1 &2012187246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2012187247}
+  m_Layer: 0
+  m_Name: Focus Point
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2012187247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012187246}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.062, y: 1.079, z: -0.809}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 147344759}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2017129612
 GameObject:
   m_ObjectHideFlags: 0
