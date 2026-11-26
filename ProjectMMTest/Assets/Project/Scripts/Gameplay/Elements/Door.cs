@@ -65,5 +65,12 @@ namespace MMTest.Gameplay
             _pivot.localRotation = target;
             _doorRoutine = null;
         }
+
+        //For signal emitters
+        public void OpenSE()
+        {
+            RotateTo(_closedRotation * Quaternion.Euler(0, -90, 0));
+            _isOpen = true;
+        }
     }
 }
