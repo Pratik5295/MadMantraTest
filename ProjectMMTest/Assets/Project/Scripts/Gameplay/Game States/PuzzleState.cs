@@ -16,11 +16,17 @@ namespace MMTest.Gameplay
             player.SetControls(false, false, false,true,false);
             player.SwitchToPuzzleInput();
             player.FocusCamera(_puzzle.FocusPoint);
+
+            _puzzle.SubscribeListeners();
         }
 
         public override void Exit(GamePlayer player)
         {
             player.ReleaseCamera();
+
+            _puzzle?.UnsubscribeListeners();
+
+            _puzzle = null;
         }
     }
 }

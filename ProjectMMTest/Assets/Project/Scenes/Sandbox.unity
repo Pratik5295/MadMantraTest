@@ -1712,7 +1712,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5d599a54ebb4e46adcccd9dd12f56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.BasePuzzleElement
-  _multipleInteractions: 0
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -1727,6 +1726,21 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+  OnUnInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 915371469}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &265848038
 GameObject:
@@ -3071,7 +3085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5d599a54ebb4e46adcccd9dd12f56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.BasePuzzleElement
-  _multipleInteractions: 0
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -3087,6 +3100,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnUnInteracted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &494819346
 GameObject:
   m_ObjectHideFlags: 0
@@ -10163,6 +10179,10 @@ MonoBehaviour:
   _message: Puzzle Interactor
   _trigger: {fileID: 241728736}
   _focusPoint: {fileID: 804117005}
+  _buttons:
+  - {fileID: 260570533}
+  - {fileID: 2031160578}
+  - {fileID: 2038282680}
 --- !u!1 &1117033755
 GameObject:
   m_ObjectHideFlags: 0
@@ -15535,7 +15555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5d599a54ebb4e46adcccd9dd12f56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.BasePuzzleElement
-  _multipleInteractions: 0
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -15550,6 +15569,21 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+  OnUnInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1488504639}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2038282678
 GameObject:
@@ -15596,7 +15630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5d599a54ebb4e46adcccd9dd12f56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMTest.Gameplay.BasePuzzleElement
-  _multipleInteractions: 0
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -15611,6 +15644,21 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+  OnUnInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1771212075}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2067318324
 GameObject:

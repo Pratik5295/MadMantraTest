@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,25 +6,32 @@ namespace MMTest.Gameplay
 {
     public class BasePuzzleElement : MonoBehaviour, IPuzzleElement
     {
-        [SerializeField]
-        protected bool _multipleInteractions = false; //Can it be interacted with more than once?
-
-        private bool _isInteractedWith = false;
+        private bool _isPressed = false; //Starts with default off state
 
         [SerializeField]
-        private UnityEvent OnInteracted; //Setup in engine
+        private UnityEvent OnInteracted; //Setup in engine for pressed state
+        [SerializeField]
+        private UnityEvent OnUnInteracted; //Unpressed state
+
+        public Action<bool> OnStateChange;
         public virtual void Interact()
         {
-            if (_isInteractedWith && _multipleInteractions) return; 
+            ToggleState();
+        }
 
-            Debug.Log($"Interacted with: {name}");
-
-            if (!_multipleInteractions)
+        private void ToggleState()
+        {
+            if (_isPressed)
             {
-                _isInteractedWith = true;
+                OnUnInteracted?.Invoke();
+                OnStateChange?.Invoke(false);
             }
-
-            OnInteracted?.Invoke();
+            else
+            {
+                OnInteracted?.Invoke();
+                OnStateChange?.Invoke(true);
+            }
+            _isPressed = !_isPressed;
         }
     }
 }
