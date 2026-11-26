@@ -13812,6 +13812,10 @@ PlayableDirector:
     value: {fileID: 577847774}
   - key: {fileID: 242224907243577880, guid: 02bd9c8d0e5eec04f8512ea6737350b9, type: 2}
     value: {fileID: 811229025}
+  - key: {fileID: -5302262863174822495, guid: 02bd9c8d0e5eec04f8512ea6737350b9, type: 2}
+    value: {fileID: 984092737}
+  - key: {fileID: -6754284822624043049, guid: 02bd9c8d0e5eec04f8512ea6737350b9, type: 2}
+    value: {fileID: 1930865459}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &1640341113
@@ -14619,6 +14623,8 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 0beafbeab882a3847b172bab72c6584a, type: 2}
+    - {fileID: 11400000, guid: 4bb0c82970a454140b2a40e4b59b5c55, type: 2}
+    - {fileID: 11400000, guid: 44981c7c5b2c100409d473c39a1a6ec4, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -14637,6 +14643,34 @@ MonoBehaviour:
         - m_Target: {fileID: 1930865460}
           m_TargetAssemblyTypeName: MMTest.Gameplay.Door, Assembly-CSharp
           m_MethodName: Lock
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1930865460}
+          m_TargetAssemblyTypeName: MMTest.Gameplay.Door, Assembly-CSharp
+          m_MethodName: Close
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1930865460}
+          m_TargetAssemblyTypeName: MMTest.Gameplay.Door, Assembly-CSharp
+          m_MethodName: OpenSE
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
